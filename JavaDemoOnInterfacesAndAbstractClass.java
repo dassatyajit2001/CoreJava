@@ -18,6 +18,10 @@ public class JavaDemoOnInterfacesAndAbstractClass {
 		obj.f1(4);
 		obj.f3();
 		
+		
+		ExtendingInterface i1=new ExtendingInterfaceClass();
+		i1.f1();
+		i1.f2();
 	}
 
 	public static Parent getObj(int x) {
@@ -59,9 +63,14 @@ class Child2 extends Parent {
 }
 
 interface I1 {
+	//the  access for a variable is public static and final
 	int x = 5;
 
-	default void f1() {
+	/**
+	 * default methods can have body. They can be overridden as well.
+	 * The methods can be made final in an interface
+	 */
+	default  void f1() {
 		System.out.println("inside default f1" + x);
 	}
 
@@ -105,7 +114,7 @@ class Child implements I1 {
 	 * Default overridden
 	 */
 	@Override
-	public void f1() {
+	final public void f1() {
 		System.out.println("inside default overridden f1 of Child " + x);
 	}
 
@@ -131,6 +140,9 @@ interface Enclosing{
 	
 	public interface Inner{
 		void f1();
+		default void f2() {
+			System.out.println("inside Inner default f2 method");
+		}
 	}
 }
 
@@ -144,6 +156,39 @@ class ExclosingInterfaceExample implements Enclosing.Inner{
 	@Override
 	public void f1() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+/**
+ * interface can extent another interface
+ * @author satyajitdas
+ *
+ */
+interface ExtendingInterface extends Enclosing.Inner{
+	
+	/**
+	 * can override non default and default methods and provide no implementation
+	 */
+	@Override
+	public void f1();	
+	@Override
+	public void f2();	
+}
+
+class ExtendingInterfaceClass implements ExtendingInterface{
+
+	@Override
+	public void f1() {
+		System.out.println("inside f1 of ExtendingInterfaceClass");
+		
+	}
+
+	@Override
+	public void f2() {
+		System.out.println("inside f2 of ExtendingInterfaceClass");
+		
 		
 	}
 	
