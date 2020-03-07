@@ -121,3 +121,30 @@ class Child implements I1 {
 abstract class AbstractClassParent implements I1{
 	
 }
+
+/**
+ * Enclosing interface has inner interface
+ * @author satyajitdas
+ *
+ */
+interface Enclosing{
+	
+	public interface Inner{
+		void f1();
+	}
+}
+
+/**
+ * How to access Inner Interface
+ * @author satyajitdas
+ *
+ */
+class ExclosingInterfaceExample implements Enclosing.Inner{
+
+	@Override
+	public void f1() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
