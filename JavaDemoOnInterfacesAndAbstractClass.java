@@ -85,10 +85,12 @@ interface I1 {
 
 	/**
 	 * method can be made private but need to have a body
+	 * THis can be called by another default of private method in the same interface
 	 */
 	private void f2() {
 		System.out.println("inside private non default f2 ");
 	}
+	
 
 	void f3();
 
@@ -156,6 +158,13 @@ class ExclosingInterfaceExample implements Enclosing.Inner{
 	@Override
 	public void f1() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Static method inside an Interface needs a body non body method gives compile time error
+	 */
+	static void f21() {
 		
 	}
 	
